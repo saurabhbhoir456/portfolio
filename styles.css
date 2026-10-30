@@ -210,19 +210,6 @@ main {
     transition: transform 350ms ease;
 }
 
-.project-preview-gita {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background:
-        radial-gradient(ellipse at center, rgba(234, 182, 107, 0.18), transparent 65%),
-        linear-gradient(135deg, #171b2a, #30251d);
-    color: var(--accent);
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.7rem, 4vw, 3rem);
-    letter-spacing: 0.08em;
-}
-
 .project-card:hover .project-preview img,
 .project-card:focus-within .project-preview img {
     transform: scale(1.025);
