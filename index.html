@@ -3,336 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore digital gateways to Sanskrit learning, the Upanishads, Yoga Sutras, and ancient philosophy.">
+    <meta name="description" content="Explore digital gateways to Sanskrit learning, the Bhagavad Gita, Upanishads, Yoga Sutras, and ancient philosophy.">
     <title>Saurabh Bhoir - Ancient Wisdom Projects</title>
-    <script>
-        const savedTheme = localStorage.getItem('theme');
-        const preferredTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-        document.documentElement.dataset.theme = savedTheme || preferredTheme;
-    </script>
+    <script src="script.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            color-scheme: light dark;
-            --bg-primary: #0b1020;
-            --bg-card: rgba(22, 30, 50, 0.78);
-            --text-main: #f5f4f0;
-            --text-muted: #a7aec0;
-            --accent: #eab66b;
-            --accent-hover: #f5cb8b;
-            --border: rgba(203, 213, 225, 0.14);
-            --heading: #ffffff;
-            --glow-warm: rgba(119, 89, 61, 0.2);
-            --glow-cool: rgba(50, 75, 120, 0.12);
-            --card-hover: rgba(27, 37, 60, 0.92);
-            --accent-border: rgba(234, 182, 107, 0.55);
-        }
-
-        :root[data-theme="light"] {
-            color-scheme: light;
-            --bg-primary: #f8f6f1;
-            --bg-card: rgba(255, 255, 255, 0.78);
-            --text-main: #242a36;
-            --text-muted: #626b7a;
-            --accent: #95601f;
-            --accent-hover: #704515;
-            --border: rgba(71, 65, 53, 0.15);
-            --heading: #202636;
-            --glow-warm: rgba(210, 165, 105, 0.19);
-            --glow-cool: rgba(130, 155, 190, 0.15);
-            --card-hover: rgba(255, 255, 255, 0.98);
-            --accent-border: rgba(149, 96, 31, 0.45);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-primary);
-            background-image:
-                radial-gradient(ellipse at 50% 0%, var(--glow-warm), transparent 50%),
-                radial-gradient(ellipse at 100% 55%, var(--glow-cool), transparent 38%);
-            color: var(--text-main);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        header {
-            position: relative;
-            text-align: center;
-            padding: clamp(4.5rem, 11vw, 8rem) 1.5rem 3.5rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .theme-toggle {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.55rem;
-            padding: 0.6rem 0.85rem;
-            color: var(--text-main);
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            font: inherit;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 180ms ease, border-color 180ms ease;
-        }
-
-        .theme-toggle:hover {
-            border-color: var(--accent-border);
-        }
-
-        .theme-toggle svg {
-            width: 1rem;
-            height: 1rem;
-            fill: none;
-            stroke: currentColor;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            stroke-width: 1.7;
-        }
-
-        .theme-toggle .sun-icon,
-        :root[data-theme="light"] .theme-toggle .moon-icon {
-            display: none;
-        }
-
-        :root[data-theme="light"] .theme-toggle .sun-icon {
-            display: block;
-        }
-
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.65rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-        }
-
-        .eyebrow::before,
-        .eyebrow::after {
-            content: "";
-            width: 1.5rem;
-            height: 1px;
-            background: currentColor;
-            opacity: 0.7;
-        }
-
-        header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 7vw, 5rem);
-            line-height: 1.08;
-            letter-spacing: -0.045em;
-            margin-bottom: 1.25rem;
-            color: var(--heading);
-        }
-
-        header p {
-            color: var(--text-muted);
-            font-size: clamp(1rem, 2vw, 1.15rem);
-            max-width: 620px;
-            margin: 0 auto;
-        }
-
-        .profile-links {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.5rem 1rem;
-            margin-top: 1.5rem;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        .profile-links a {
-            color: var(--accent);
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .profile-links a:hover {
-            color: var(--accent-hover);
-        }
-
-        main {
-            flex: 1;
-            max-width: 1160px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 0 1.5rem 6rem;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1.25rem;
-        }
-
-        .project-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            backdrop-filter: blur(14px);
-            transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease;
-        }
-
-        .project-card:hover,
-        .project-card:focus-within {
-            transform: translateY(-5px);
-            border-color: var(--accent-border);
-            background-color: var(--card-hover);
-        }
-
-        .project-preview {
-            display: block;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            background: var(--border);
-        }
-
-        .project-preview img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top center;
-            transition: transform 350ms ease;
-        }
-
-        .project-card:hover .project-preview img,
-        .project-card:focus-within .project-preview img {
-            transform: scale(1.025);
-        }
-
-        .project-content {
-            flex: 1;
-            padding: clamp(1.35rem, 2.5vw, 1.9rem);
-        }
-
-        .project-category {
-            display: block;
-            margin-bottom: 1rem;
-            color: var(--accent);
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-        }
-
-        .project-content h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.35rem, 2.5vw, 1.7rem);
-            line-height: 1.25;
-            margin-bottom: 0.85rem;
-            color: var(--heading);
-        }
-
-        .project-content p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 0;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            width: fit-content;
-            color: var(--accent);
-            font-weight: 600;
-            text-decoration: none;
-            margin: 0 clamp(1.35rem, 2.5vw, 1.9rem) 1.6rem;
-            transition: color 180ms ease, gap 180ms ease;
-        }
-
-        .btn::after {
-            content: "\2197";
-            font-size: 1.1rem;
-        }
-
-        .btn:hover {
-            color: var(--accent-hover);
-            gap: 1.35rem;
-        }
-
-        a:focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 5px;
-            border-radius: 3px;
-        }
-
-        button:focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 4px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border);
-        }
-
-        @media (max-width: 640px) {
-            header {
-                padding: 4.5rem 1.25rem 2.75rem;
-            }
-
-            .theme-toggle {
-                top: 1rem;
-                right: 1.25rem;
-            }
-
-            main {
-                padding: 0 1.25rem 4rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .project-preview {
-                aspect-ratio: 16 / 10;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                scroll-behavior: auto !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -349,7 +24,7 @@
         </button>
         <span class="eyebrow">A collection of learning projects</span>
         <h1>Ancient Wisdom & Philosophy</h1>
-        <p>Explore digital gateways to Sanskrit learning, Upanishads, Yoga Sutras, and ancient philosophy.</p>
+        <p>Explore digital gateways to Sanskrit learning, the Bhagavad Gita, Upanishads, Yoga Sutras, and ancient philosophy.</p>
         <div class="profile-links">
             <span>Created by Saurabh Bhoir</span>
             <span aria-hidden="true">·</span>
@@ -410,6 +85,17 @@
                 </div>
                 <a href="https://saurabhbhoir456.github.io/ashtavakra-gita/" target="_blank" rel="noopener noreferrer" class="btn">View project</a>
             </div>
+
+            <!-- Project 5 -->
+            <div class="project-card">
+                <div class="project-preview project-preview-gita" aria-hidden="true">श्रीमद्भगवद्गीता</div>
+                <div class="project-content">
+                    <span class="project-category">Wisdom · Bhagavad Gita</span>
+                    <h3>Bhagavad Gita Learning</h3>
+                    <p>Explore the Bhagavad Gita through Sanskrit verses, transliterations, daily reflections, and chapter-by-chapter reading.</p>
+                </div>
+                <a href="https://saurabhbhoir456.github.io/bhagavad-gita-learning/" target="_blank" rel="noopener noreferrer" class="btn">View project</a>
+            </div>
         </div>
     </main>
 
@@ -417,24 +103,6 @@
         <p>&copy; 2026 Saurabh Bhoir. Built with ancient wisdom and modern web standards.</p>
     </footer>
 
-    <script>
-        const themeToggle = document.querySelector('.theme-toggle');
-        const themeLabel = themeToggle.querySelector('span');
 
-        function updateThemeToggle(theme) {
-            const nextTheme = theme === 'dark' ? 'light' : 'dark';
-            themeToggle.setAttribute('aria-label', `Switch to ${nextTheme} theme`);
-            themeLabel.textContent = `${nextTheme === 'light' ? 'Light' : 'Dark'} mode`;
-        }
-
-        updateThemeToggle(document.documentElement.dataset.theme);
-
-        themeToggle.addEventListener('click', () => {
-            const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-            document.documentElement.dataset.theme = nextTheme;
-            localStorage.setItem('theme', nextTheme);
-            updateThemeToggle(nextTheme);
-        });
-    </script>
 </body>
 </html>
